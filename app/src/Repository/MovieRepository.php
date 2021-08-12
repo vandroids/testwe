@@ -6,6 +6,7 @@ namespace App\Repository;
 use App\Entity\Movie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 class MovieRepository extends ServiceEntityRepository
@@ -29,5 +30,19 @@ class MovieRepository extends ServiceEntityRepository
     {
         $this->em->remove($movie);
         $this->em->flush();
+    }
+
+    public function getMoviesWithoutPosterQuery(int $limit): Query
+    {
+        $queryBuilder = $this->createQueryBuilder('m');
+
+        $queryBuilder
+            ->andWhere(
+                $queryBuilder->expr()->isNull('m.poster'),
+                )
+            ->orderBy('m.id')
+            ->setMaxResults($limit);
+
+        return $queryBuilder->getQuery();
     }
 }

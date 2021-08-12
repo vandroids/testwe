@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Movie
  *
  * @ORM\Table(name="movie")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\MovieRepository")
  */
 class Movie
 {
@@ -31,6 +31,11 @@ class Movie
      * @ORM\Column(name="duration", type="integer", nullable=false)
      */
     private int $duration;
+
+    /**
+     * @ORM\Column(name="poster", type="string", length=256, nullable=true)
+     */
+    private ?string $poster = null;
 
     public function getId(): int
     {
@@ -57,6 +62,18 @@ class Movie
     public function setDuration(int $duration): self
     {
         $this->duration = $duration;
+
+        return $this;
+    }
+
+    public function getPoster(): ?string
+    {
+        return $this->poster;
+    }
+
+    public function setPoster(?string $poster): self
+    {
+        $this->poster = $poster;
 
         return $this;
     }

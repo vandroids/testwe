@@ -8,6 +8,10 @@ parameters:
 services:
     # default configuration for services in *this* file
     _defaults:
+        bind:
+            $rapidApiUrl: '%env(resolve:RAPIDAPI_URL)%'
+            $rapidApiKey: '%env(RAPIDAPI_KEY)%'
+            $rapidApiHost: '%env(RAPIDAPI_HOST)%'
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 

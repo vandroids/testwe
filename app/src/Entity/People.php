@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * People
  *
  * @ORM\Table(name="people")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\PeopleRepository")
  */
 class People
 {
