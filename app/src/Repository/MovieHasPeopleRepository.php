@@ -2,12 +2,12 @@
 
 namespace App\Repository;
 
-use App\Entity\Type;
+use App\Entity\MovieHasPeople;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
-class TypeRepository extends ServiceEntityRepository
+class MovieHasPeopleRepository extends ServiceEntityRepository
 {
     private EntityManagerInterface $em;
 
@@ -15,18 +15,18 @@ class TypeRepository extends ServiceEntityRepository
     {
         $this->em = $em;
 
-        parent::__construct($registry, Type::class);
+        parent::__construct($registry, MovieHasPeople::class);
     }
 
-    public function saveType(Type $type): void
+    public function saveMovieHasPeople(MovieHasPeople $movieHasType): void
     {
-        $this->em->persist($type);
+        $this->em->persist($movieHasType);
         $this->em->flush();
     }
 
-    public function deleteType(Type $type): void
+    public function deleteMovieHasPeople(MovieHasPeople $movieHasType): void
     {
-        $this->em->remove($type);
+        $this->em->remove($movieHasType);
         $this->em->flush();
     }
 }
