@@ -40,9 +40,9 @@ class MoviePosters
                 $this->em->flush();
                 $this->em->clear();
             }
-
-            $this->em->flush();
         }
+
+        $this->em->flush();
 
         return $count;
     }
