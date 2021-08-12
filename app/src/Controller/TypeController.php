@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\Type;
+use App\DTO\TypeDTO;
 use App\Repository\TypeRepository;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -32,11 +32,11 @@ class TypeController extends AbstractFOSRestController
      */
     public function createType(Request $request): View
     {
-        $type = new Type();
-        $type->setName($request->request->get('name'));
-        $this->typeRepository->saveType($type);
+        $dto = TypeDTO::createFromRequest($request);
 
-        return View::create($type, Response::HTTP_CREATED);
+        $this->typeRepository->createType($dto);
+
+        return View::create($dto, Response::HTTP_CREATED);
     }
 
     /**
@@ -46,9 +46,10 @@ class TypeController extends AbstractFOSRestController
      */
     public function getType(int $typeId): View
     {
-        $type = $this->typeRepository->find($typeId);
+        $entity = $this->typeRepository->find($typeId);
+        $dto = TypeDTO::createFromEntity($entity);
 
-        return View::create($type, Response::HTTP_OK);
+        return View::create($dto, Response::HTTP_OK);
     }
 
     /**
@@ -57,9 +58,10 @@ class TypeController extends AbstractFOSRestController
      */
     public function getTypes(): View
     {
-        $types = $this->typeRepository->findAll();
+        $entities = $this->typeRepository->findAll();
+        $dtos = TypeDTO::createFromEntityCollection($entities);
 
-        return View::create($types, Response::HTTP_OK);
+        return View::create($dtos, Response::HTTP_OK);
     }
 
     /**
@@ -70,13 +72,12 @@ class TypeController extends AbstractFOSRestController
      */
     public function putType(int $typeId, Request $request): View
     {
-        $type = $this->typeRepository->find($typeId);
-        if ($type) {
-            $type->setName($request->get('name'));
-            $this->typeRepository->saveType($type);
-        }
+        $entity = $this->typeRepository->find($typeId);
+        $dto = TypeDTO::createFromRequest($request);
 
-        return View::create($type, Response::HTTP_OK);
+        $this->typeRepository->updateType($dto, $entity);
+
+        return View::create($dto, Response::HTTP_OK);
     }
 
     /**
@@ -86,10 +87,9 @@ class TypeController extends AbstractFOSRestController
      */
     public function deleteType(int $typeId): View
     {
-        $type = $this->typeRepository->find($typeId);
-        if ($type) {
-            $this->typeRepository->deleteType($type);
-        }
+        $entity = $this->typeRepository->find($typeId);
+
+        $this->typeRepository->deleteType($entity);
 
         return View::create([], Response::HTTP_NO_CONTENT);
     }

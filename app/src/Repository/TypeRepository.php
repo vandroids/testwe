@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\DTO\TypeDTO;
 use App\Entity\Type;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class TypeRepository extends ServiceEntityRepository
 {
@@ -19,15 +21,33 @@ class TypeRepository extends ServiceEntityRepository
         parent::__construct($registry, Type::class);
     }
 
-    public function saveType(Type $type): void
+    public function createType(TypeDTO $dto): void
     {
-        $this->em->persist($type);
+        $entity = TypeDTO::createEntity($dto);
+
+        $this->em->persist($entity);
         $this->em->flush();
     }
 
-    public function deleteType(Type $type): void
+    public function updateType(TypeDTO $dto, ?Type $entity): void
     {
-        $this->em->remove($type);
+        if (null === $entity) {
+            throw new NotFoundHttpException();
+        }
+
+        $entity = TypeDTO::modifyEntity($dto, $entity);
+
+        $this->em->persist($entity);
+        $this->em->flush();
+    }
+
+    public function deleteType(?Type $entity): void
+    {
+        if (null === $entity) {
+            throw new NotFoundHttpException();
+        }
+
+        $this->em->remove($entity);
         $this->em->flush();
     }
 }
