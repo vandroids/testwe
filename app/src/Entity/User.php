@@ -35,6 +35,11 @@ class User implements UserInterface
         return $this->id;
     }
 
+    public function getKey(): string
+    {
+        return $this->key;
+    }
+
     public function setKey(string $key): self
     {
         $this->key = $key;
@@ -42,9 +47,9 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getKey(): string
+    public function getUsername(): string
     {
-        return $this->key;
+        return $this->username;
     }
 
     public function setUsername(string $username): self
@@ -52,11 +57,6 @@ class User implements UserInterface
         $this->username = $username;
 
         return $this;
-    }
-
-    public function getUsername(): string
-    {
-        return $this->username;
     }
 
     public function getRoles()

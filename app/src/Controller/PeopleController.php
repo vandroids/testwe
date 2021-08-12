@@ -5,12 +5,13 @@ namespace App\Controller;
 
 use App\Entity\People;
 use App\Repository\PeopleRepository;
+use DateTime;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use FOS\RestBundle\Controller\AbstractFOSRestController;
-use FOS\RestBundle\Controller\Annotations as Rest;
 
 
 /**
@@ -35,7 +36,7 @@ class PeopleController extends AbstractFOSRestController
         $people = new People();
         $people->setFirstname($request->request->get('firstname'));
         $people->setLastname($request->request->get('lastname'));
-        $people->setDateOfBirth(new \DateTime($request->request->get('date')));
+        $people->setDateOfBirth(new DateTime($request->request->get('date')));
         $people->setNationality($request->request->get('nationality'));
         $this->peopleRepository->savePeople($people);
 

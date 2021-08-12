@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,7 +35,7 @@ class People
     /**
      * @ORM\Column(name="date_of_birth", type="datetime", nullable=false)
      */
-    private \DateTime $dateOfBirth;
+    private DateTime $dateOfBirth;
 
     /**
      * @ORM\Column(name="nationality", type="string", length=255, nullable=false)
@@ -69,12 +71,12 @@ class People
         return $this;
     }
 
-    public function getDateOfBirth(): \DateTimeInterface
+    public function getDateOfBirth(): DateTimeInterface
     {
         return $this->dateOfBirth;
     }
 
-    public function setDateOfBirth(\DateTime $dateOfBirth): self
+    public function setDateOfBirth(DateTime $dateOfBirth): self
     {
         $this->dateOfBirth = $dateOfBirth;
 

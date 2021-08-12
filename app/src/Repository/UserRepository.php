@@ -16,7 +16,8 @@ class UserRepository extends ServiceEntityRepository
     (
         ManagerRegistry $registry,
         EntityManagerInterface $manager
-    ) {
+    )
+    {
         parent::__construct($registry, User::class);
         $this->manager = $manager;
     }
