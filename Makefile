@@ -18,3 +18,12 @@ dbreset:
 	docker-compose exec php bash -c 'php bin/console doctrine:database:create && exit 0'
 	docker-compose exec database bash -c 'mysql -usymfony -psymfony symfony < /test-cinemahd-database.sql'
 	docker-compose exec database bash -c 'mysql -usymfony -psymfony symfony < /test-cinemahd-datas.sql'
+
+migration:
+	docker-compose exec php bash -c 'php bin/console doctrine:migrations:migrate'
+
+install:
+    make down
+    make up
+	make dbreset
+	make migration

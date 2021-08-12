@@ -18,7 +18,7 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected int $id;
+    protected ?int $id = null;
 
     /**
      * @ORM\Column(name="username", type="string", length=255, nullable=false)
@@ -30,7 +30,7 @@ class User implements UserInterface
      */
     protected string $key;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }

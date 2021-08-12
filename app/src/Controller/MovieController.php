@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
- * @Route("/api/movie")
+ * @Route("/api/movies")
  */
 class MovieController extends AbstractFOSRestController
 {

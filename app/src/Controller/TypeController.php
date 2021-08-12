@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
- * @Route("/api/type")
+ * @Route("/api/types")
  */
 class TypeController extends AbstractFOSRestController
 {

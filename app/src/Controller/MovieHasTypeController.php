@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
- * @Route("/api/movie_has_type")
+ * @Route("/api/movie_has_types")
  */
 class MovieHasTypeController extends AbstractFOSRestController
 {

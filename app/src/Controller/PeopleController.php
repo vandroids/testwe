@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
- * @Route("/api/people")
+ * @Route("/api/peoples")
  */
 class PeopleController extends AbstractFOSRestController
 {

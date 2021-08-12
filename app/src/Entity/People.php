@@ -20,7 +20,7 @@ class People
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private int $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(name="firstname", type="string", length=255, nullable=false)
@@ -42,7 +42,7 @@ class People
      */
     private string $nationality;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }

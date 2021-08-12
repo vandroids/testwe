@@ -18,7 +18,7 @@ class Type
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private int $id;
+    private ?int $id = null;
 
     /**
      * @var string
@@ -27,7 +27,7 @@ class Type
      */
     private string $name;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }

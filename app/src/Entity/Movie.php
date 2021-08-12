@@ -18,7 +18,7 @@ class Movie
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private int $id;
+    private ?int $id = null;
 
     /**
      * @var string
@@ -37,7 +37,7 @@ class Movie
      */
     private ?string $poster = null;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
