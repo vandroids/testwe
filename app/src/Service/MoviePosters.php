@@ -19,7 +19,7 @@ class MoviePosters
         $this->api = $api;
     }
 
-    public function search()
+    public function populate()
     {
         $movies = $this
             ->em

@@ -30,7 +30,7 @@ class SearchMoviePostersCommand extends Command
     {
         $output->writeln('Starting posters search');
 
-        $count = $this->postersService->search();
+        $count = $this->postersService->populate();
 
         $output->writeln(sprintf('Found %d posters', $count));
 
