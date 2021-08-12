@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Entity;
@@ -66,21 +67,17 @@ class User implements UserInterface
 
     public function getPassword()
     {
-
     }
 
     public function getSalt()
     {
-
     }
 
     public function eraseCredentials()
     {
-
     }
 
     public function __call($name, $arguments)
     {
-
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository;
@@ -16,8 +17,7 @@ class UserRepository extends ServiceEntityRepository
     (
         ManagerRegistry $registry,
         EntityManagerInterface $manager
-    )
-    {
+    ) {
         parent::__construct($registry, User::class);
         $this->manager = $manager;
     }

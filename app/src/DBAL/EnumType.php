@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\DBAL;
@@ -14,9 +15,12 @@ abstract class EnumType extends Type
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
-        $values = array_map(function ($val) {
-            return "'" . $val . "'";
-        }, $this->values);
+        $values = array_map(
+            function ($val) {
+                return "'" . $val . "'";
+            },
+            $this->values
+        );
 
         return "ENUM(" . implode(", ", $values) . ")";
     }

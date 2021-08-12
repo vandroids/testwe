@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Service;
@@ -29,8 +30,7 @@ class XRapidAPI
         string $rapidApiUrl,
         string $rapidApiKey,
         string $rapidApiHost
-    )
-    {
+    ) {
         $this->client = $client;
         $this->url = $rapidApiUrl;
         $this->key = $rapidApiKey;

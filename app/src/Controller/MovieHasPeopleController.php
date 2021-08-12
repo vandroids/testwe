@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -28,8 +29,7 @@ class MovieHasPeopleController extends AbstractFOSRestController
         MovieHasPeopleRepository $movieHasPeopleRepository,
         MovieRepository $movieRepository,
         PeopleRepository $peopleRepository
-    )
-    {
+    ) {
         $this->movieHasPeopleRepository = $movieHasPeopleRepository;
         $this->movieRepository = $movieRepository;
         $this->peopleRepository = $peopleRepository;

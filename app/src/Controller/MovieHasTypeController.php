@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -28,8 +29,7 @@ class MovieHasTypeController extends AbstractFOSRestController
         MovieHasTypeRepository $movieHasTypeRepository,
         MovieRepository $movieRepository,
         TypeRepository $typeRepository
-    )
-    {
+    ) {
         $this->movieHasTypeRepository = $movieHasTypeRepository;
         $this->movieRepository = $movieRepository;
         $this->typeRepository = $typeRepository;

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\DTO;
@@ -24,7 +25,7 @@ class TypeDTO
         return new static($name);
     }
 
-    protected static function validate($name)
+    protected static function validate($name): void
     {
         if (empty($name)) {
             throw new BadRequestException('Invalid data');
